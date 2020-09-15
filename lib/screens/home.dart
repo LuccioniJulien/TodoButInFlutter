@@ -15,16 +15,13 @@ class _TodoHomeState extends State<TodoHome> {
   List<Todo> _todos = List();
   final inputController = TextEditingController();
   final errorController = TextEditingController();
-  bool isNewTodoValid = true;
 
   bool _addTodo() {
     if (inputController.text == "") {
-      isNewTodoValid = false;
       errorController.text = "Please fill the input";
       setState(() {});
       return false;
     } else {
-      isNewTodoValid = true;
       errorController.text = "";
     }
 
@@ -60,8 +57,8 @@ class _TodoHomeState extends State<TodoHome> {
                     () => deleteTodo(index));
               })),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showMyDialog(context, inputController, errorController,
-            _addTodo, isNewTodoValid),
+        onPressed: () =>
+            showMyDialog(context, inputController, errorController, _addTodo),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),

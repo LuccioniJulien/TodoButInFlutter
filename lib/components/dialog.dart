@@ -4,8 +4,7 @@ Future<void> showMyDialog(
     BuildContext context,
     TextEditingController inputController,
     TextEditingController errorController,
-    bool addTodo(),
-    bool isNewTodoValid) async {
+    bool addTodo()) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: true,
@@ -21,8 +20,9 @@ Future<void> showMyDialog(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'your todo',
-                          errorText:
-                              isNewTodoValid ? "" : errorController.text))
+                          errorText: errorController.text == ''
+                              ? null
+                              : errorController.text))
                 ],
               ),
             ),
@@ -38,7 +38,7 @@ Future<void> showMyDialog(
                 child: Text('Add'),
                 onPressed: () {
                   if (!addTodo()) {
-                    setState((){});
+                    setState(() {});
                     return;
                   }
                   Navigator.of(context).pop();
