@@ -3,13 +3,15 @@ import 'package:todo/model/todo.dart';
 
 Card bindRow(Todo todo, updateIsDone(bool isDone), void delete()) {
   return Card(
-      color: todo.isDone ?? false ? Colors.yellow : Colors.deepPurple,
       child: Container(
         child: Row(
           children: [
             Expanded(
               child: Text(
                 todo.title,
+                style: todo.isDone ?? false
+                    ? TextStyle(decoration: TextDecoration.lineThrough)
+                    : null,
               ),
             ),
             Checkbox(
