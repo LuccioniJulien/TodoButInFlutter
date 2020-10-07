@@ -5,11 +5,4 @@ class Todo {
 
   Todo(this.title);
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'isDone': isDone,
-    };
-  }
 }
